@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div style="height: 100vh;background-image: url('https://static.vecteezy.com/system/resources/thumbnails/033/027/755/small_2x/flat-lay-vegetables-on-white-background-food-and-diet-concept-ai-generated-free-photo.jpg');background-size: cover;"
+        class="row align-items-center">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4 text-success ">
+            <h1>Create New Account</h1>
+            <h5 class="mt-3 ms-2">What you will get?</h5>
+            <ul class="mt-5 text-primary fw-bolder">
+                <li>Different Recipes</li>
+                <li>Easy way to Make Recipes</li>
+                <li>Save your Favorite Recipes</li>
+                <li>Download your Recipes</li>
+            </ul>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <form [formGroup]="registerForm" (ngSubmit)="register()"
+                style="width: 500px;background-color: rgba(0,0,0,0.3);"
+                class="border rounded p-5 mt-5 shadow text-light">
+                <div class="mb-5 text-center">
+                    <h3><i class="fa-solid fa-utensils"></i>Cookpedia</h3>
+                </div>
+                <div class="mb-3">
+                    <input name="username" formControlName="username" type="text" placeholder="Username"
+                        class="form-control">
+                </div>
+
+                @if(registerForm.get('username')?.errors && registerForm.get('username')?.touched){
+                <div class="mb-3 text-danger fw-bolder">*Invalid Username</div>
+
+                }
+                <div class="mb-3">
+                    <input name="email" formControlName="email" type="email" placeholder="Email" class="form-control">
+                </div>
+                @if(registerForm.get('email')?.errors && registerForm.get('email')?.touched){
+                <div class="mb-3 text-danger fw-bolder">*Invalid Email</div>
+
+                }
+                <div class="mb-3">
+                    <input name="password" formControlName="password" type="password" placeholder="Password"
+                        class="form-control">
+                </div>
+                @if(registerForm.get('password')?.errors && registerForm.get('password')?.touched){
+                <div class="mb-3 text-danger fw-bolder">*Invalid Password</div>
+
+                }
+                <div class="mb-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

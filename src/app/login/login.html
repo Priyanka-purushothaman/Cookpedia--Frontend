@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div style="height: 100vh;background-image: url('https://static.vecteezy.com/system/resources/thumbnails/033/027/755/small_2x/flat-lay-vegetables-on-white-background-food-and-diet-concept-ai-generated-free-photo.jpg');background-size: cover;"
+        class="row align-items-center">
+        <div class="row align-items-center">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 text-center">
+                <div class="p-2 mb-5">
+                    <h1>Login</h1>
+                    <h6>More than 100 plus Recipe from around world</h6>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="login()" style="width: 500px; background-color: rgba(223, 242, 165, 0.219);"
+                    class="border rounded p-5 shadow">
+                    <h3><i class="fa-solid fa-utensils"></i>Cookpedia</h3>
+
+                    <div class="mb-3">
+                        <input name="email" formControlName="email" type="email" placeholder="E Mail" class="form-control">
+                    </div>
+                     @if(loginForm.get('email')?.errors && loginForm.get('email')?.touched){
+                      <div class="mb-3 text-danger fw-bolder text-start">*Invalid email</div>
+
+                       }
+                    <div class="mb-3">
+                        <input  name="password" formControlName="password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                     @if(loginForm.get('password')?.errors && loginForm.get('password')?.touched){
+                      <div class="mb-3 text-danger fw-bolder text-start">*Invalid Password</div>
+
+                       }
+                    <div class="mb-3 d-grid">
+                        <button type="submit" class="btn btn-success">Login</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

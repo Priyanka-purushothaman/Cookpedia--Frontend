@@ -1,0 +1,72 @@
+<app-header></app-header>
+
+<div class="container my-5">
+
+    <div class="row">
+        <div class="col-lg-5">
+            <a routerLink="/recipes">Back To Recipe List</a>
+            <br>
+            <img class="mt-4 w-100" [src]="recipe().image" alt="view recipe">
+            <div class="mt-5 d-flex justify-content-between">
+                <BUtton class="btn btn-success">Download Recipe</BUtton>
+                <BUtton class="btn btn-primary">Save Recipe</BUtton>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <h2 class="items-center text-primary">{{recipe().name}}</h2>
+            <div class="d-flex justify-content-between mt-4">
+                <h6 class="text-success">Cuisine: {{recipe().cuisine}}</h6>
+                <h6 class="text-success">Serving:{{recipe().servings}}</h6>
+                <h6 class="text-success">Mode of Cooking:{{recipe().difficulty}} </h6>
+            </div>
+            <div class="d-flex justify-content-between my-4">
+                <div>
+                    <img width="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKJLCXR01qfXSaXFpZPU0XjaTzULsnDbWV4w&s" alt="preparation">
+                <h6>Prepartion Time </h6>
+                <span class="text-danger">{{recipe().prepTimeMinutes}} Minutes</span>
+                </div>
+                 <div>
+                <img width="100px" src="https://img.freepik.com/premium-vector/cook-time-logo-template-design_20029-663.jpg" alt="cooktime">
+                <h6>Cooking Time </h6>
+                <span class="text-danger"> {{recipe().cookTimeMinutes}} Minutes</span>
+                </div>
+                <div>
+                <img width="100px" src="https://png.pngtree.com/png-vector/20220119/ourmid/pngtree-clock-icon-on-plate-with-knife-and-fork-vector-png-image_44023276.jpg" alt="calories time">
+                <h6>Calories Per Servings </h6>
+                <span class="text-danger"> {{recipe().caloriesPerServing}} Minutes</span>
+                 </div>
+            </div>
+            <div class="my-5">
+                <h3 class="text-primary">Ingredients Needed</h3>
+                <ol>
+                    @for (item of recipe().ingredients; track $index) {
+
+                    <li>{{item}}</li>
+                    }
+                </ol>
+
+
+            </div>
+            <div class="mt-3">
+                <h3 class="text-primary">Cooking Instruction</h3>
+                <ul>
+                    @for (item of recipe().instructions; track $index) {
+
+                    <li>{{item}}</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+<div class="mb-5">
+    <h1>Related Recipes</h1>
+    <div class="row my-3">
+
+    </div>
+</div>
+
+</div>
+
+<app-footer></app-footer>
