@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class Recipes {
 
   allRecipes: any = signal([])
+  dummyAllRecipes:any = []
   cusineArray: any = signal([])
+  mealtypeArray:any = signal([])
   api = inject(ApiService)
   router = inject(Router)
 
@@ -25,14 +27,26 @@ export class Recipes {
     this.api.getAllRecipesAPI().subscribe((res: any) => {
       // console.log(res);
       this.allRecipes.set(res)
+      this.dummyAllRecipes = this.allRecipes()
       // console.log(this.allRecipes());
       this.allRecipes().forEach((item: any) => {
         !this.cusineArray().includes(item.cuisine) && this.cusineArray().push(item.cuisine)
       });
-      console.log(this.cusineArray());
-
-    })
+      // console.log(this.cusineArray());
+    let dummyMealTypeArray = this.allRecipes().map((item:any)=>item.mealType).flat(Infinity)
+      dummyMealTypeArray.forEach((item:any)=>{
+        !this.mealtypeArray().includes(item) && this.mealtypeArray().push(item)
+      })
+      // console.log(this.mealtypeArray());
+      })
   }
+
+  filterRecipe(key:string,value:string){
+    this.allRecipes.set(this.dummyAllRecipes.filter((item:any)=>item[key]==value))
+
+  }
+
+
 
   viewRecipe(recipeId: string) {
     if (sessionStorage.getItem("token")) {

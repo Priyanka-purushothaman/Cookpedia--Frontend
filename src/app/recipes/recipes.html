@@ -5,7 +5,7 @@
         <div class="col-lg-4">
             <h4>Filter</h4>
             <!-- all btn -->
-            <button class="btn mt-5">All</button>
+            <button (click)="getAllRecipes()" class="btn mt-5">All</button>
             <!-- cuisine dropdown -->
             <div>
                 <button class="btn  dropdown-toggle" type="button" data-bs-toggle="collapse"
@@ -15,7 +15,7 @@
                 <div class="collapse" id="collapseExample">
                     <!-- duplicate according cuisine type -->
                     @for (cuisine of cusineArray(); track $index) {
-                    <button class="btn ">{{cuisine}}</button>
+                    <button (click)="filterRecipe('cuisine',cuisine)" class="btn ">{{cuisine}}</button>
 
                     }
                 </div>
@@ -29,7 +29,10 @@
                 </button>
                 <div class="collapse" id="collapseExample1">
                     <!-- duplicate according cuisine type -->
-                    <button class="btn ">meal</button>
+                     @for (meal of mealtypeArray(); track $index) {
+                       <button (click)="filterRecipe('mealType',meal)" class="btn ">{{meal}}</button>
+
+                     }
                 </div>
 
             </div>
