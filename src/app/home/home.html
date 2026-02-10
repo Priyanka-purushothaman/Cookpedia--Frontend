@@ -73,13 +73,15 @@
     </div>
     <!-- client Testmonials -->
      <div class="text-center my-5">
-        <h5>Client Testimonials</h5>
+        <h1>Client Testimonials</h1>
         <div class="scroll-text d-flex my-5">
             <!-- testimony duplicate -->
-             <div class="border rounded shadow w-25 p-3 me-2 text-wrap">
-                <h5>name</h5>
-                <p style=" text-align:justify;">message</p>
+           @for (item of feedbacks(); track $index) {
+              <div class="border rounded shadow w-25 p-3 me-2 text-wrap">
+                <h5>{{item.name}}</h5>
+                <p style=" text-align:justify;">{{item.message}}</p>
              </div>
+           }
 
         </div>
      </div>

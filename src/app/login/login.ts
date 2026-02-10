@@ -35,12 +35,17 @@ export class Login {
         next:(res:any)=>{
           sessionStorage.setItem("token",res.token)
           sessionStorage.setItem("user",JSON.stringify(res.user))
-           alert("User registeration successfull.......")
+           alert("User login successfull.......")
+           this.api.getChartData()
           this.loginForm.reset()
-          setTimeout(()=>{
-          this.router.navigateByUrl('/')
-          },2000)
-           },
+
+          if(res.user.role=="user"){
+            this.router.navigateByUrl('/')
+          }else{
+            this.router.navigateByUrl('admin')
+          }
+       },
+       
         error:(reason:any)=>{
           alert(reason.error);
         }

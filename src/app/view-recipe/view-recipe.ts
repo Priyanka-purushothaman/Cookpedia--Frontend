@@ -21,11 +21,15 @@ export class ViewRecipe {
   recipe:any = signal({})
   api = inject(ApiService)
   activateRoute = inject (ActivatedRoute)
-  recipeId:string = this.activateRoute.snapshot.params['id']
+  recipeId:string = ""
   router = inject(Router)
 
    ngOnInit(){
-   this.getRecipe(this.recipeId)
+    this.activateRoute.params.subscribe((res:any)=>{
+    this.recipeId = res['id']
+    this.getRecipe(this.recipeId)
+
+       })
    }
 
 
@@ -59,6 +63,7 @@ downloadRecipe(){
   this.api.addDowloadAPI(this.recipeId,{name:this.recipe().name,cuisine:this.recipe().cuisine,image:this.recipe().image}).subscribe({
     next:((res:any)=>{
       console.log(res);
+      this.api.getChartData()
       this.pdfRecipe()
     }),
     error:(reason:any)=>{
@@ -80,5 +85,20 @@ autoTable(pdf,{
 pdf.save(`${this.recipe().name}.pdf`)
 
 }
+
+saveRecipe(){
+  this.api.addToSaveRecipesAPI(this.recipeId,{name:this.recipe().name,image:this.recipe().image}).subscribe({
+    next:((res:any)=>{
+      // console.log(res);
+      alert(`'${res.name}' added to your Recipe Collection`)
+    }),
+    error:(reason:any)=>{
+        console.log(reason);
+        alert(reason.error)
+
+    }
+  })
+}
+
 
 }

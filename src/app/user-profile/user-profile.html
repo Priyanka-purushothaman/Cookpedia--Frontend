@@ -1,1 +1,50 @@
-<p>user-profile works!</p>
+<app-header></app-header>
+<div class="container">
+    <div style="height:200px;" class="row bg-primary"></div>
+    <div style="width: 220px; height: 220px;border-radius: 50%;margin-top: -110px"
+        class="p-1 shadow d-flex justify-content-center align-items-center">
+        <label for="upload">
+            <img width="180px" height="180px" style="border-radius: 50%;" [src]="userImage()" alt="profile">
+
+        </label>
+        <input (change)="updateProfilePic($event)" type="file" id="upload" accept="image/*" hidden>
+    </div>
+    <label style="margin-top:-60px; margin-left: 85px;" for="upload" class="btn bg-light">
+        <i class="fa-solid fa-upload fa-2x text-primary"></i></label>
+
+    <h2>{{username}} <i class="fa-solid fa-circle-check  text-primary"></i></h2>
+    <p style="text-align: justify;" class="my-3">
+        👩‍🍳 Cooking is my happy place. I love experimenting with simple ingredients and turning them into delicious
+        homemade meals. Cookpedia inspires me to discover new recipes, save my favorites, and share my cooking journey
+        with a community that truly loves food.</p>
+    <p>🍳 Loves exploring new dishes & saving favorites</p>
+    <p> 🍲 Enjoys healthy, everyday cooking</p>
+    <p> 💛 Sharing food stories with the Cookpedia community</p>
+
+
+    <div class="my-5">
+        <h3>Download Recipes History</h3>
+        <div class="mb-5">
+            <h1>Related Recipes</h1>
+            <div class="row">
+                @if(downloadList().length>0){
+                  @for (recipe of downloadList(); track $index) {
+                <div class="col-lg-2">
+                    <div class="p-3">
+                        <img routerLink="/recipes/{{recipe.recipeId}}/view" class="card-img-top" [src]="recipe.image" alt="recipe">
+                        <div class="card-body">
+                            <p class="card-title fw-bolder">{{recipe.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+                }@else{
+                    <p class="fw-bolder text-primary">Recipes not download yet !!!</p>
+                }
+              
+            </div>
+
+        </div>
+
+    </div>
+    <app-footer></app-footer>

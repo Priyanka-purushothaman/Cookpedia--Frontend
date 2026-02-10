@@ -9,7 +9,7 @@
             <img class="mt-4 w-100" [src]="recipe().image" alt="view recipe">
             <div class="mt-5 d-flex justify-content-between">
                 <Button (click)="downloadRecipe()" class="btn btn-success">Download Recipe</Button>
-                <Button class="btn btn-primary">Save Recipe</Button>
+                <Button (click)="saveRecipe()" class="btn btn-primary">Save Recipe</Button>
             </div>
         </div>
 

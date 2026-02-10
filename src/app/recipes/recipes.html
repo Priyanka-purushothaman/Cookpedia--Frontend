@@ -41,11 +41,12 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <h1>All Recipes</h1>
-                <input type="text" placeholder="Search Recipe Here" class="form-control w-50">
+                <input [(ngModel)]="searchKey" type="text" placeholder="Search Recipe Here" class="form-control w-50">
             </div>
             <div class="row">
                 <!-- duplicating according to recipe card  -->
-                @for (recipe of allRecipes(); track $index) {
+                @for (recipe of allRecipes() | search:searchKey | paginate: { itemsPerPage: 9, currentPage: p }
+                ; track $index) {
                 <div class="col-lg-4">
                     <div (click)="viewRecipe(recipe._id)" class="p-3">
                         <img class="card-img-top" [src]="recipe.image" alt="recipe">
@@ -56,8 +57,15 @@
                     </div>
                 </div>
                 }
+                @if((allRecipes() | search:searchKey).length==0){
+                    <p class="my-5 fw-bolder fs-4 text-danger">Recipe Not Found</p>
+                }
 
             </div>
+            <!-- paginaion -->
+             <div class="mb-3 text-center">
+                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+             </div>
 
         </div>
     </div>

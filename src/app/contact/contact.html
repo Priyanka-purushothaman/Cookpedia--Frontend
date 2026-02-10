@@ -1,1 +1,130 @@
-<p>contact works!</p>
+<app-header></app-header>
+
+<div class="container">
+    <div style="height: 350px;" class="row bg-primary justify-content-center align-items-center text-light ">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 text-center">
+            <h1>Contact Us</h1>
+            <p>Welcome to Cookpedia, your go-to recipe collection for delicious and easy-to-follow dishes. We’d love to
+                hear from you! Whether you have a question, feedback, recipe suggestion, or need help using our
+                platform, feel free to reach out. Your thoughts help us improve and bring you a better cooking
+                experience every day.</p>
+        </div>
+        <div class="col-lg-2"></div>
+
+    </div>
+    <div class="row align-items-center my-5">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <h3>Get In Touch</h3>
+            <p style="text-align: justify;" class="mb-5">Welcome to Cookpedia, your go-to recipe collection for
+                delicious and
+                easy-to-follow dishes. We’d love to hear from you! Whether you have a question, feedback, recipe
+                suggestion, or need help using our platform, feel free to reach out. Your thoughts help us improve and
+                bring you a better cooking experience every day.</p>
+            <!-- icons -->
+            <div class="d-flex">
+                <div style="width: 50px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light">
+                    <i class="fa-solid fa-location"></i>
+                </div>
+                <div class="ms-3 ">
+                    <h5>Address</h5>
+                    <p>Cookpedia, Kakkanad Kochi, Kerala – 682030
+                        India</p>
+                </div>
+            </div>
+            <div class="d-flex my-2">
+                <div style="width: 50px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="ms-3">
+                    <h5>Phone Number</h5>
+                    <p>+91 90000 12345</p>
+                </div>
+            </div>
+
+            <div class="d-flex my-2">
+                <div style="width: 50px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="ms-3">
+                    <h5>Mail</h5>
+                    <p>feedback@cookpedia.com</p>
+                </div>
+            </div>
+            <hr>
+            <h4>Follow Us</h4>
+            <div class="d-flex mt-4">
+                <div style="width: 40px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light me-3">
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <div style="width: 40px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light me-3">
+                    <i class="fa-brands fa-square-instagram"></i>
+                </div>
+                <div style="width: 40px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light me-3">
+                    <i class="fa-brands fa-square-twitter"></i>
+                </div>
+                <div style="width: 40px; height: 40px; border-radius: 50%;"
+                    class="bg-primary d-flex justify-content-center align-items-center text-light me-3">
+                    <i class="fa-brands fa-square-youtube"></i>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <form #feedbackForm="ngForm" (ngSubmit)="addFeedback()" class="border rounded p-5 shadow">
+                <h3>Client Testimony</h3>
+                <div class="mb-3 mt-5">
+                    <input #username="ngModel" name="username" [(ngModel)]="name" type="text" placeholder="Name"
+                        class="form-control" required pattern="[a-zA-Z ]*">
+                </div>
+                @if (username.invalid && username.touched) {
+                <div class="mb-3 text-danger fw-bolder">*Invalid Name</div>
+                }
+                <div class="mb-3">
+                    <input #mail="ngModel" name="email" [(ngModel)]="email" type="text" placeholder="Email"
+                        class="form-control" email required="">
+                </div>
+
+                @if (mail.invalid && mail.touched) {
+                <div class="mb-3 text-danger fw-bolder">*Invalid Email</div>
+                }
+                <div class="mb-3">
+                    <textarea #nmessage="ngModel" name="message" [(ngModel)]="message" type="text" placeholder="Message"
+                        class="form-control" required></textarea>
+                </div>
+                @if (nmessage.invalid && nmessage.touched) {
+                <div class="mb-3 text-danger fw-bolder">*Invalid Message</div>
+                }
+                <p class="my-4 text-succes">By Submitting, your aggreeing the terms and condition of our website. We may
+                    use your details in our fa-square-twitter</p>
+
+                <div class="float-end">
+                    <button [disabled]="feedbackForm.invalid" type="submit" class="btn btn-primary ">Submit</button>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="my-5">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31432.949485752466!2d76.3182152430772!3d10.007054166301389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080b659f4531e7%3A0x3211283aa080f0f3!2sInfopark%20Kochi%20Phase%202!5e0!3m2!1sen!2sin!4v1769714070432!5m2!1sen!2sin"
+            width="1300" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+
+
+</div>
+
+<app-footer></app-footer>

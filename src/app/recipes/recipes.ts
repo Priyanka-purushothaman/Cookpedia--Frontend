@@ -3,15 +3,19 @@ import { Header } from '../header/header';
 import { Footer } from '../footer/footer';
 import { ApiService } from '../services/api-service';
 import { Router } from '@angular/router';
+import { SearchPipe } from '../pipes/search-pipe';
+import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-recipes',
-  imports: [Header, Footer],
+  imports: [Header, Footer,SearchPipe,FormsModule,NgxPaginationModule],
   templateUrl: './recipes.html',
   styleUrl: './recipes.css',
 })
 export class Recipes {
-
+  p: number = 1;
+  searchKey:string =""
   allRecipes: any = signal([])
   dummyAllRecipes:any = []
   cusineArray: any = signal([])

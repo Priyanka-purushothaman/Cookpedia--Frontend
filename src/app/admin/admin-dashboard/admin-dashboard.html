@@ -1,0 +1,99 @@
+<div class="container-fluid">
+    <div class="row">
+        @if (isSidebarOpen) {
+        <div class="col-lg-2">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        }
+        <div class="col">
+            <!-- header -->
+            <div class="row">
+                <div class="p-2 mt-2 bg-primary w-100 d-flex align-items-center justify-content-between">
+                    <div class="fs-3 text-light">
+                        <button (click)="toggleSidebar()" class="btn text-light">
+                            <i class="fa-solid fa-bars fa-2x"></i></button>
+                        ADMIN
+                    </div>
+                    <!-- logout dropdown -->
+                    <div class="dropdown">
+                        <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-user text-light"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button (click)="logout()" class="dropdown-item">Logout <i
+                                        class="fa-solid fa-arrow-right-from-bracket"></i></button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- bolcks -->
+            <div class="row my-5">
+                <!-- box -->
+                <div class="col-lg-3">
+                    <div style="background-color: rgba(243, 235, 17, 0.958);" class="d-flex justify-content-center
+             align-items-center p-2 rounded text-light">
+                        <i class="fa-solid fa-users fs-1"></i>
+                        <div class="ms-5">
+                            <h4>Users</h4>
+                            <h3>{{userCount()}} </h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div style="background-color: rgba(231, 7, 164, 0.504);" class="d-flex justify-content-center
+                     align-items-center p-2 rounded text-light">
+                        <i class="fa-solid fa-bowl-rice fs-1"></i>
+                        <div class="ms-5">
+                            <h4>Recipes</h4>
+                            <h3>{{recipeCount()}}</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div style="background-color: rgba(32, 124, 20, 0.504);" class="d-flex justify-content-center
+                    align-items-center p-2 rounded text-light">
+                        <i class="fa-solid fa-downloads fs-1"></i>
+                        <div class="ms-5">
+                            <h4>Downloads</h4>
+                            <h3>{{downloadCount()}}</h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div style="background-color: rgba(255, 0, 0, 0.4);" class="d-flex justify-content-center
+                 align-items-center p-2 rounded text-light">
+                        <i class="fa-solid fa-message fs-1"></i>
+                        <div class="ms-5">
+                            <h4>{{notificationCount()}}</h4>
+                            <h6>You have <a routerLink="/admin/feedbacks">1</a> new feedback!!!</h6>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-7">
+                    <!-- chart -->
+                    
+                    <highcharts-chart 
+                     [options]="chartOptions" 
+                     class="chart" />
+                </div>
+                <div class="col-lg-5">
+                    <!-- calender -->
+                    <div class="d-flex justify-content-center align-items-center">
+                        <mat-card class="demo-inline-calendar-card">
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
